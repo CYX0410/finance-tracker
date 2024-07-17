@@ -2,9 +2,9 @@
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
-$servername = "localhost";
-$username = "root";
-$password = "";
+$servername = "20.37.211.153";
+$username = "cyx";
+$password = "12345678";
 $dbname = "expensedb";
 
 $conn = new mysqli($servername, $username, $password, $dbname);

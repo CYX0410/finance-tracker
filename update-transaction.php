@@ -9,9 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 // Database connection parameters
-$servername = "localhost";
-$username = "root";
-$password = ""; // Password for your MySQL database
+$servername = "20.37.211.153";
+$username = "cyx";
+$password = "12345678"; // Password for your MySQL database
 $dbname = "expensedb";
 
 // Create connection
