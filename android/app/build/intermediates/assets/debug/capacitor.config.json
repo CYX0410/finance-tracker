@@ -1,0 +1,10 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Finance_Tracker",
+	"webDir": "www",
+	"plugins": {
+		"CapacitorHttp": {
+			"enabled": true
+		}
+	}
+}
