@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="color: white;">
+      Expense Tracker
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToProfile()"><i id="profile-icon" class="bi bi-person-circle"></i></ion-button>
+      <ion-button (click)="logout()"><i id="logout-icon" class="bi bi-box-arrow-right"></i></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="greetings">
+    <h4 style="color: white;">Welcome</h4>
+    <h1 style="color: white;">{{ username }}</h1>
+  </div>
+
+  <ion-searchbar [(ngModel)]="searchCategory" (ionInput)="filterTransactions()" placeholder="Search by category"></ion-searchbar>
+  <div class="button-row">
+    <ion-button class="menu-button" expand="block" (click)="addTransaction()">
+      <img src="assets/icon/addTransaction.png">
+      <ion-label style="color: white;">Add</ion-label>
+    </ion-button>
+    <ion-button class="menu-button" expand="block" routerLink="/currency-calculator">
+      <img src="assets/icon/currencyCalculator.png">
+      <ion-label style="color: white;">Convert</ion-label>
+    </ion-button>
+    <ion-button class="menu-button" expand="block" routerLink="/expense-chart">
+      <img src="assets/icon/generateChart.png">
+      <ion-label style="color: white;">Chart</ion-label>
+    </ion-button>
+    </div>
+
+  <div class="expenses-header">
+    <h5 style="color: white;">List of Expenses</h5>
+    <ion-button class="refresh-button" (click)="refreshTransactions()"><img class="refresh-icon" src="assets/icon/refresh.png"></ion-button>
+  </div>
+
+  <ion-spinner *ngIf="loading"></ion-spinner> <!-- Show loading spinner when data is loading -->
+
+  <ng-container *ngIf="!loading && filteredTransactionsByMonth">
+    <ng-container *ngFor="let month of filteredTransactionsByMonth | keyvalue">
+      <ion-list style="background-color: black;">
+        <ion-item-divider>
+          <ion-label >{{ month.key }}</ion-label>
+        </ion-item-divider>
+        <ion-item *ngFor="let transaction of month.value">
+          <ion-label>
+            <h2 style="color: white;">Amount: {{ transaction.amount }} MYR</h2>
+            <p style="color: white;">Category: {{ transaction.category }}</p>
+            <p style="color: white;">Date: {{ transaction.date | date: 'mediumDate' }}</p>
+            <p style="color: white;">Notes: {{ transaction.notes }}</p>
+            <p style="color: white;">Location: {{transaction.location }}</p>
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button color="primary" (click)="editTransaction(transaction.id)">
+              <i id="editDelete-icon" class="bi bi-pen"></i>
+            </ion-button>
+            <ion-button color="danger" (click)="deleteTransaction(transaction.id)">
+              <i id="editDelete-icon" class="bi bi-trash-fill"></i>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+
+        <ion-item>
+          <ion-label style="color: white;"><strong>Total: {{ getTotalAmount(month.value) }} MYR</strong></ion-label>
+        </ion-item>
+      </ion-list>
+    </ng-container>
+  </ng-container>
+
+  <ion-item *ngIf="!loading && transactions.length === 0">
+    <ion-label style="color: white;">
+      No transactions recorded yet.
+    </ion-label>
+  </ion-item>
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+

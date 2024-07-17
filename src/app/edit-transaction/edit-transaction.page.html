@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button style="color:white" defaultHref="/expense-tracker"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="color:white">Edit Transaction</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="saveTransaction()">
+    <ion-item>
+      <ion-label style="color:white" position="floating">Amount</ion-label>
+      <ion-input style="color: white"[(ngModel)]="transaction.amount" name="amount" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label style="color:white" position="floating">Category</ion-label>
+      <ion-select style="color: white"[(ngModel)]="transaction.category" name="category">
+        <ion-select-option value="Food">Food</ion-select-option>
+        <ion-select-option value="Transport">Transport</ion-select-option>
+        <ion-select-option value="Shopping">Shopping</ion-select-option>
+        <ion-select-option value="Bills">Bills</ion-select-option>
+        <ion-select-option value="Others">Others</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label  style="color:white" position="floating">Date</ion-label>
+      <ion-datetime style="color: white" display-format="YYYY-MM-DDTHH:mm:ss" [(ngModel)]="transaction.date" name="date"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label style="color:white" position="floating">Notes</ion-label>
+      <ion-input style="color: white"[(ngModel)]="transaction.notes" name="notes"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  style="color:white" position="floating">Location</ion-label>
+      <ion-input style="color: white"[(ngModel)]="transaction.location" name="location"></ion-input>
+    </ion-item>
+    <ion-button expand="full" type="submit">Save</ion-button>
+  </form>
+</ion-content>
+

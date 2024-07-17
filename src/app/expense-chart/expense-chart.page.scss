@@ -1,0 +1,43 @@
+ion-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+canvas {
+  max-width: 100%;
+  margin: 20px 0;
+}
+
+.chart-container {
+  width: 80%; 
+  position: relative;
+  margin: auto;
+}
+
+.chart-subcontainer {
+  border-radius: 10px;
+  background: #303030;
+  box-shadow: 3.0px 4.0px 4.0px hsl(0deg 0% 0% / 0.38);
+  padding: 2px 10px;
+}
+
+.chart-container h5{
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#doughnutChart {
+  display: block;
+  aspect-ratio: 1; /* Maintain a 1:1 aspect ratio */
+}
+
+#lineChart {
+  width: 80%; 
+  height: 400px; 
+}
+
+.white-text{
+  color: #fff;
+}
